@@ -1,0 +1,10 @@
+interface multi_if(input clk);
+  
+  logic [3:0] a;
+  logic [3:0] b;
+  logic [7:0] c;
+  
+  modport dut(input a, b, output c);
+  
+  modport testb(input c, output a , b);
+endinterface
