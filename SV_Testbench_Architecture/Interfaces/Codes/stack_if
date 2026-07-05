@@ -1,0 +1,21 @@
+interface stack_if(input logic clk, input logic rst_n);
+  logic push;
+  logic pop;
+  logic [7:0] din;
+  logic full;
+  logic empty;
+  logic [7:0] dout;
+  
+  
+  clocking cb @(posedge clk);
+    default input #1 output #1;
+    input full, empty;
+    input [7:0] dout;
+    output push, pop;
+    output [7:0] din;
+  endclocking
+  
+  modport dut(input clk, rst_n, push, pop, din, output full, empty, dout);
+  modport testb(clocking cb, input rst_n);
+    
+    endinterface
