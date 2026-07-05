@@ -1,0 +1,19 @@
+interface sync_fifo_if(input logic clk, iput logic rst_n);
+  logic wr_en;
+  logic [3:0] din;
+  logic rd_en;
+  logic full;
+  logic empty;
+  logic [3:0] dout;
+  
+  clocking cb @(posedge clk);
+    default input #1 output #1;
+    input [3:0] dout;
+    input full, empty;
+    output wr_en, rd_en;
+    output [3:0] din;
+  endclocking
+  
+  modport dut(input clk, rst_n, wr_en, rd_en, din, output full, empty, dout);
+  modport testb(clocking cb);
+    endinterface
