@@ -1,0 +1,12 @@
+interface alu_if();
+  
+  logic [3:0] a;
+  logic [3:0] b;
+  logic [1:0] sel;
+  logic [3:0] out;
+  
+  modport dut(input a,b,sel, output out);
+  
+  modport trsb(output a,b,sel, input out);
+  
+endinterface
