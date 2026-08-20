@@ -1,11 +1,14 @@
- `include "asfifo_pkg.sv"
- `include "asfifo_if.sv"
+`include "asfifo_pkg.sv"
+`include "asfifo_if.sv"
+`include "asfifo_assertions.sv"
+`include "asfifo_bind.sv"
+
 module tb_top;
-  localparam int DWIDTH = 8;
-  localparam int DEPTH = 8;
-  localparam int PWIDTH = 4;
+  localparam int DWIDTH = 16;
+  localparam int DEPTH = 16;
+  localparam int PWIDTH = 5;
   
-  localparam int WCLK = 8;
+  localparam int WCLK = 10;
   localparam int RCLK = 5;
   
   import asfifo_pkg::*;
@@ -66,6 +69,8 @@ module tb_top;
   initial begin
     //asfifo_sanity_test #(DWIDTH) test_inst;
     asfifo_random_test #(DWIDTH) test_inst;
+    //asfifo_read_only_test #(DWIDTH) test_inst;
+    //asfifo_write_only_test #(DWIDTH) test_inst;
     test_inst = new(vif);
     test  = test_inst;
 
