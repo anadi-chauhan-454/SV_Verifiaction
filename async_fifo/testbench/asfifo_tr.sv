@@ -1,4 +1,4 @@
-class asfifo_tr #(int DWIDTH=8);
+class asfifo_tr #(int DWIDTH=16);
   
   static int unsigned count = 0;
   int unsigned txn_id;
@@ -28,14 +28,23 @@ class asfifo_tr #(int DWIDTH=8);
   }
   
   constraint write_only {
-    wen dist{0 := 20, 1 := 80};
+    wen dist{0 := 10, 1 := 90};
     ren == 0;
   }
   
   constraint read_only {
     wen == 0;
-    ren dist{0 := 20, 1 := 80};
+    ren dist{0 := 40, 1 := 60};
   }
+  
+  constraint no_write {
+    !(wen && full);
+  }
+  
+  constraint no_read {
+    !(ren && empty);
+  }
+  
   
   function string convert2string();
     return $sformatf("Id=%0d, time=%0t | wen=%0d, in=%0h, | ren=%0d, | full=%0d, empty=%0d, | out=%0h",
