@@ -1,4 +1,4 @@
-module d_flip_flop#(int PWIDTH=4)
+module d_flip_flop#(int PWIDTH=5)
   (
     input logic clk, rst_n,
     input logic  [PWIDTH-1:0] in,
