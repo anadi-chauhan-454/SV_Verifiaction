@@ -1,4 +1,4 @@
-module read_pointer_handler #(int PWIDTH=4)
+module read_pointer_handler #(int PWIDTH=5)
   (
     input logic  rclk, rrst_n,
     input logic  ren,
@@ -28,4 +28,3 @@ module read_pointer_handler #(int PWIDTH=4)
     end
   end
 endmodule
-  
