@@ -4,9 +4,9 @@
 `include "fifo_mem.sv"
 
 module asfifo_top #(
-     int DWIDTH = 8,
-     int DEPTH  = 8,
-     int PWIDTH = 4
+     int DWIDTH = 16,
+     int DEPTH  = 16,
+     int PWIDTH = 5
 )(
     input  logic wclk,
     input  logic wrst_n,
